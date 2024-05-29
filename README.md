@@ -1,1 +1,4 @@
 # LessonPython
+
+skill - изучение Skill
+
