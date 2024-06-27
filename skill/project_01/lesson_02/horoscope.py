@@ -1,27 +1,32 @@
 import random
 
-times = ['утром', 'днем', 'вечером', 'ночью']
-advices = ['ожидайте', 'предостерегайтесь', 'будьте открыты для']
-promises = ['гостей', 'встреч', 'неожиданного праздника']
+times = ["утром", "днем", "вечером", "ночью", "после обеда", "перед сном"]
+advices = ["ожидайте", "предостерегайтесь", "будьте открыты для"]
+promises = ["гостей из забытого прошлого", "встреч со старыми знакомыми", "неожиданного праздника", "приятных перемен"]
 
-generated_prophecies = []
-i = 0
-while i < 5:
-    j = 0
-    forecast = []
-    while j < 3:
-        ti = random.randrange(0, len(times))
-        ai = random.randrange(0, len(advices))
-        pi = random.randrange(0, len(promises))
+def generated_prophecies(total_num = 5, num_sentences = 3):
+    prophecies = []
 
-        t = times[ti]
-        a = advices[ai]
-        p = promises[pi]
-        full_sentence = t.title() + ' ' + a + ' ' + p + '.'
+    i = 0
+    while i < total_num:
+        j = 0
+        forecast = ""
+        while j < num_sentences:
+            t = random.choice(times)
+            a = random.choice(advices)
+            p = random.choice(promises)
 
-        forecast.append(full_sentence)
+            full_sentence = t.title() + " " + a + " " + p + "."
+            if j != num_sentences - 1:
+                full_sentence = full_sentence + " "
 
-        j = j + 1
+            forecast = forecast + full_sentence
+            j = j + 1
 
-    generated_prophecies.append(forecast[0] + ' ' + forecast[1] + ' ' + forecast[2])
-    i = i + 1
+        prophecies.append(forecast)
+        i = i + 1
+
+    return prophecies
+
+print(generated_prophecies())
+
